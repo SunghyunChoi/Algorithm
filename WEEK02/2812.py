@@ -11,7 +11,7 @@ num = list(map(int, list(r().strip())))
 
 stk = deque([])
 
-for i in range(k):
+for i in range(n):
     x = num[i]
     #print(x)
     if not stk:
@@ -23,17 +23,7 @@ for i in range(k):
             else:
                 break
         stk.append(x)
-#print(stk, num[k:])
+    if i>k-1:
+        print(stk.popleft(), end='')
 
-for i in range(k, n):
-    x = num[i]
-    if not stk:
-        stk.append(x)
-    else:
-        while stk:
-            if stk[-1] < x:
-                stk.pop()
-            else:
-                break
-        stk.append(x)
-    print(stk.popleft(), end='')
+    
