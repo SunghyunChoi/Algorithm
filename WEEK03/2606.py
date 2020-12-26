@@ -19,17 +19,7 @@ for i in range(e):
 
 
 ##################################
-'''
-def bfs(arr, start):
-    visited = []
-    d = deque([start])
-    while d:
-        x = d.popleft()
-        if x not in visited:
-            visited.append(x)
-            d.extend(v_list[x])
-    return visited
-'''
+
 def bfs(arr, start):
     visited = defaultdict(bool)
     answer = []
