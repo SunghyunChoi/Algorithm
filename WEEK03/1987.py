@@ -7,7 +7,6 @@ import heapq
 import sys
 from collections import deque, defaultdict
 r = sys.stdin.readline
-# 아스키코드로 업데이트
 R,C = map(int, r().split())
 MAP = [list(r().strip()) for _ in range(R)]
 visit = defaultdict(bool)
@@ -20,18 +19,27 @@ def max_path(x, y, cnt):
     global answer
     answer = max(answer, cnt)
     
-    for dr in direction:
-        np = [x + dr[0], y + dr[1]]
-        if np[0] < 0 or np[1] < 0 or np[0]>=R or np[1] >= C:
-            continue
+    if x > 0 and visit[MAP[x-1][y]] == False:
+        visit[MAP[x-1][y]] = True
+        max_path(x-1, y, cnt+1)
+        visit[MAP[x-1][y]] = False
 
-        if visit[MAP[np[0]][np[1]]]:
-            continue
-        
-        visit[MAP[np[0]][np[1]]] = True
-        max_path(np[0], np[1], cnt+1)
-        visit[MAP[np[0]][np[1]]] = False
+    if x < R-1 and visit[MAP[x+1][y]] == False:
+ 
+        visit[MAP[x+1][y]] = True
+        max_path(x+1, y, cnt+1)
+        visit[MAP[x+1][y]] = False
 
+    if y > 0 and visit[MAP[x][y-1]] == False:
+        visit[MAP[x][y-1]] = True
+        max_path(x, y-1, cnt+1)
+        visit[MAP[x][y-1]] = False
+
+    if y < C-1 and visit[MAP[x][y+1]] == False:
+     
+        visit[MAP[x][y+1]] = True
+        max_path(x, y+1, cnt+1)
+        visit[MAP[x][y+1]] = False
 
 max_path(0,0,1)
 print(answer)
