@@ -5,7 +5,6 @@ import heapq
 import sys
 from collections import deque, defaultdict
 r = sys.stdin.readline
-
 #################################################
 
 N = int(r())
