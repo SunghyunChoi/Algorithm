@@ -5,11 +5,11 @@ def solution(progresses, speeds):
     end = []
     count = 1
     before_available = math.ceil((100-progresses[0])/speeds[0])
-    print(before_available)
+    # print(before_available)
     now_available = 0
     for i in range(1, len(progresses)):
         now_available = math.ceil((100-progresses[i])/speeds[i])
-        print(now_available)
+        # print(now_available)
         if now_available <= before_available:
             if i == (len(progresses)-1):
                 count += 1
